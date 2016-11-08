@@ -1,0 +1,57 @@
+@color:pink;
+@width:300px;
+@height:300px;
+.radius(@r1:50%,@r2:50%,@r3:50%,@r4:50%){
+  -webkit-border-radius: @arguments;
+  -o-border-radius: @arguments;
+  -ms-border-radius: @arguments;
+  -moz-border-radius: @arguments;
+  border-radius: @arguments;
+}
+.shadow(@type) when (@type=0){
+  -webkit-box-shadow:0 0 10px red;
+  -o-box-shadow:0 0 10px red;
+  -ms-box-shadow:0 0 10px red;
+  -moz-box-shadow:0 0 10px red;
+  box-shadow:0 0 10px red;
+}
+.shadow(@type) when (@type=1){
+  -webkit-box-shadow:0 0 10px red inset;
+  -o-box-shadow:0 0 10px red inset;
+  -ms-box-shadow:0 0 10px red inset;
+  -moz-box-shadow:0 0 10px red inset;
+  box-shadow:0 0 10px red inset;
+}
+.shadow(@type,@x:0px,@y:0px,@b:10px,@c:pink) when (@type=2){
+  -webkit-box-shadow:@x @y @b @c inset;
+  -o-box-shadow:@x @y @b @c inset;
+  -ms-box-shadow:@x @y @b @c inset;
+  -moz-box-shadow:@x @y @b @c inset;
+  box-shadow:@x @y @b @c inset;
+}
+.loop (@i:1) when (@i<10){
+  .col-s-@{i}{
+    width:100px*@i;
+ }
+  .loop(@i+1);
+}
+.loop;
+.one{
+  width:@width;
+  height:@height;
+  border:1px solid darkgreen;
+  .radius(30%,30%,40%,40%);
+  .shadow(2);
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.two{
+  width:200px; height: 200px;
+  border:2px solid red;
+  border-image-source:url("../img/border.png");
+  border-image-width: 10px;
+  border-image-slice: 33.3333%;
+  border-image-repeat: round;
+  border-image-outset: 10px;
+  margin: 0 auto;
+}
